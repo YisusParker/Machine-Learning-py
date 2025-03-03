@@ -9332,6 +9332,64 @@ NBHD      38387975.0      0.0
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [81]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Reemplazar valores NaN por la mediana de la variable en cada localidad</span>
+<span class="n">df_cleaned_limits</span> <span class="o">=</span> <span class="n">df_cleaned_limits</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'LOCALITY'</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">group</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">group</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+
+<span class="c1"># Verificar si quedan valores NaN</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_cleaned_limits</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>YEAR                   0
+MO                     0
+DY                     0
+HR                     0
+T2M                    0
+PRECTOTCORR            0
+RH2M                   0
+WS10M                  0
+WD10M                  0
+PS                     0
+ALLSKY_SFC_UV_INDEX    0
+ALLSKY_SRF_ALB         0
+ALLSKY_SFC_SW_DIFF     0
+T2MDEW                 0
+T2MWET                 0
+WS50M                  0
+ALLSKY_KT              0
+LOCALITY               0
+NBHD                   0
+dtype: int64
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>C:\Users\jesus\AppData\Local\Temp\ipykernel_40008\1529272884.py:2: DeprecationWarning: DataFrameGroupBy.apply operated on the grouping columns. This behavior is deprecated, and in a future version of pandas the grouping columns will be excluded from the operation. Either pass `include_groups=False` to exclude the groupings or explicitly select the grouping columns after groupby to silence this warning.
+  df_cleaned_limits = df_cleaned_limits.groupby('LOCALITY').apply(lambda group: group.fillna(group.median(numeric_only=True)))
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
